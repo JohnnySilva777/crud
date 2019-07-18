@@ -19,7 +19,7 @@
                             <div class="alert alert-success">{{Session::get('mensagem_sucesso')}}</div>
                         @endif
                         {{ Form::open(['url' => 'clientes/add']) }}
-                            @include('clientes.blocks.config')
+                        @include('clientes.blocks.config')
                         {{ Form::close() }}
                     </div>
                 </div>
@@ -27,3 +27,22 @@
         </div>
     </div>
 @endsection
+
+@section('script')
+    <script>
+        $(document).on('blur', '#cep', function () {
+            var cep = $(this).val();
+            $.ajax({
+                url: baseUrl + '/api/cep/preencheEndereco',
+                type: 'POST',
+                dataType: 'json',
+                data: {cep: cep},
+                success: function (response, status, XMLHttpRequest) {
+                    console.log(XMLHttpRequest.responseJSON);
+                    console.log(response);
+                    $('#endereco').val(XMLHttpRequest.responseJSON);
+                }
+            })
+        })
+    </script>
+@stop

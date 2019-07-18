@@ -35,6 +35,9 @@
             @yield('content')
         </main>
     </div>
+    <script>
+        var baseUrl = '{{ \Illuminate\Support\Facades\URL::to('/') }}';
+    </script>
     @yield('script')
 </body>
 </html>

@@ -27,3 +27,24 @@
         </div>
     </div>
 @endsection
+
+@section('script')
+    <script>
+        $(document).ready(function () {
+            $(document).on('mouseout', '#numero', function () {
+                var cep = $(this).val();
+                $.ajax({
+                    url: baseUrl + '/api/cep/preencheEndereco',
+                    type: 'POST',
+                    data: { cep: cep },
+                    success: function (data) {
+                        if(data.status == '200'){
+                            console.log(data);
+                            $('#endereco').val(data.logradouro)
+                        }
+                    }
+                })
+            })
+        })
+    </script>
+@stop
