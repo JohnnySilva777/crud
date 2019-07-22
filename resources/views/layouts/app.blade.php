@@ -16,7 +16,7 @@
 
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
 </head>
@@ -35,6 +35,9 @@
             @yield('content')
         </main>
     </div>
+    <script src="sweetalert2.all.min.js"></script>
+    <!-- Optional: include a polyfill for ES6 Promises for IE11 and Android browser -->
+    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
     <script>
         var baseUrl = '{{ \Illuminate\Support\Facades\URL::to('/') }}';
     </script>

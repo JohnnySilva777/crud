@@ -32,15 +32,19 @@
     <script>
         $(document).on('blur', '#cep', function () {
             var cep = $(this).val();
+            $('#endereco').attr('readonly', false);
             $.ajax({
                 url: baseUrl + '/api/cep/preencheEndereco',
                 type: 'POST',
                 dataType: 'json',
                 data: {cep: cep},
-                success: function (response, status, XMLHttpRequest) {
-                    console.log(XMLHttpRequest.responseJSON);
-                    console.log(response);
-                    $('#endereco').val(XMLHttpRequest.responseJSON);
+                beforeSend: function () {
+                    Swal.fire('Any fool can use a computer');
+                },
+                success: function (response) {
+                    Swal.close();
+                    $('#endereco').val(response.logradouro);
+                    $('#endereco').attr('readonly', true);
                 }
             })
         })

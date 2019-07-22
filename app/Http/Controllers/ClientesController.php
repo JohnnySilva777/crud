@@ -32,7 +32,7 @@ class ClientesController extends Controller
         if ($request->isMethod('post')) {
             $data = [];
             $data = $request->all();
-            if(empty($request->numero)){
+            if (empty($request->numero)) {
                 $service = new NumeroService();
                 $numero = $service->geraNumero();
                 $data['numero'] = $numero;

@@ -36,7 +36,6 @@ class obterEnderecoLog implements ShouldQueue
      */
     public function handle()
     {
-        $log = ['cep' => $this->cep, 'mensagem' => $this->msg];
-        CepLog::create($log);
+        CepLog::create(['cep' => $this->cep, 'mensagem' => $this->msg]);
     }
 }
